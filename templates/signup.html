@@ -1,0 +1,35 @@
+
+<html>
+  <head>
+    <title>Completed Tasks</title>
+  </head>
+
+  <body
+    style="
+      width: 100%;
+      height: 100%;
+      background-color: #ededed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div
+      style="
+        max-width: 30rem;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        padding: 2rem;
+        padding-top: 10rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      "
+    >
+      <form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Signup" />
+</form>
+  </body>
+</html>

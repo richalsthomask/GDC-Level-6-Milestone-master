@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Report</title>
+  </head>
+  <body
+    style="
+      width: 100%;
+      height: 100%;
+      background-color: #ededed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div
+      style="
+        max-width: 30rem;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        padding: 2rem;
+        padding-top: 10rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          gap: 1rem;
+          margin-bottom: 2rem;
+        "
+      >
+        <a href="/tasks/"> Pending Tasks </a>
+        <a href="/completed_tasks/"> Completed Tasks </a>
+        <a href="/all_tasks/"> Report </a>
+      </div>
+
+      <h3 style="margin-top: 3rem">Tasks</h3>
+      {% if not pending_tasks %}
+      <p style="color: gray">No tasks pending</p>
+      {% else %} {% for task in pending_tasks %}
+      <div>{{forloop.counter}}. {{task.title}} [{{task.priority}}]</div>
+      {%endfor%} {% endif %}
+
+      <h3 style="margin-top: 3rem">Completed Tasks</h3>
+      {% if not completed_tasks %}
+      <p style="color: gray">No completed tasks found</p>
+      {% else %} {% for task in completed_tasks %}
+      <div>{{forloop.counter}}. {{task.title}}</div>
+      {% endfor%} {% endif %}
+    </div>
+  </body>
+</html>

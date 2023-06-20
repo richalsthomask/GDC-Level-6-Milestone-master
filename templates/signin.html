@@ -1,0 +1,41 @@
+
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+
+  <body
+    style="
+      width: 100%;
+      height: 100%;
+      background-color: #ededed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div
+      style="
+        max-width: 30rem;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        padding: 2rem;
+        padding-top: 10rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      "
+    >
+    {{ form.non_field_errors }}
+      <form method="post">
+  {% csrf_token %}
+  <div class="fieldWrapper">
+    {{ form.username.errors }}
+    <label for="{{ form.username.id_for_label }}">username:</label>
+    {{ form.username }}
+</div>
+  {{ form.as_p }}
+  <input type="submit" value="Signin" />
+</form>
+  </body>
+</html>
