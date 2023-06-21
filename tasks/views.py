@@ -24,7 +24,7 @@ class AuthorisedTasks(LoginRequiredMixin):
 class UserCreateView(CreateView):
     form_class = UserCreationForm
     template_name = "signup.html"
-    success_url = "/signin"
+    success_url = "/login"
 
 
 class UserLoginView(LoginView):
@@ -101,10 +101,6 @@ class GenericCompletedTasksView(ListView, AuthorisedTasks):
     paginate_by = 10
 
 
-def redirect_to_login(request):
-    return HttpResponseRedirect("/login")
-
-
 def report_view(request):
     return render(
         request,
@@ -114,8 +110,13 @@ def report_view(request):
                 deleted=False, completed=False
             ).order_by("priority"),
             "completed_tasks": Task.objects.filter(deleted=False, completed=True),
+            "tasks_length": Task.objects.filter(deleted=False).count(),
         },
     )
+
+
+def redirect_to_login(request):
+    return HttpResponseRedirect("/login")
 
 
 def delete_task(request, task_id):

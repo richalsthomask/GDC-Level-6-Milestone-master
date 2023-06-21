@@ -1,11 +1,11 @@
-
 <html>
   <head>
-    <title>Completed Tasks</title>
+    <title>Delete Tasks</title>
   </head>
 
   <body
     style="
+      font-family: system-ui;
       width: 100%;
       height: 100%;
       background-color: #ededed;
@@ -16,22 +16,48 @@
   >
     <div
       style="
-        max-width: 30rem;
+        max-width: 20rem;
         width: 100%;
-        height: 100%;
         background-color: white;
         padding: 2rem;
-        padding-top: 10rem;
         border-radius: 0.5rem;
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       "
     >
       <form method="post">
-  {% csrf_token %}
-  <p>Are you sure you want to delete "{{ object.title }}"?</p>
-  {{ form }}
-  <input type="submit" value="Confirm" />
-  <a href="/tasks">Cancel</a>
-</form>
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object.title }}"?</p>
+        <div
+          style="
+            margin-top: 2rem;
+            margin-bottom: -1rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: end;
+            gap: 1rem;
+          "
+        >
+          <a href="/tasks" style="text-decoration-line: none">Cancel</a>
+          <input
+            type="submit"
+            value="Confirm"
+            style="
+              background-color: red;
+              color: white;
+              border: none;
+              border-radius: 0.25rem;
+              padding: 0.5rem 1rem;
+              font-size: 1rem;
+              cursor: pointer;
+            "
+          />
+        </div>
+      </form>
+    </div>
   </body>
 </html>

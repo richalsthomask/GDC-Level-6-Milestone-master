@@ -1,11 +1,11 @@
-
 <html>
   <head>
-    <title>Completed Tasks</title>
+    <title>Sign Up</title>
   </head>
 
   <body
     style="
+      font-family: system-ui;
       width: 100%;
       height: 100%;
       background-color: #ededed;
@@ -16,20 +16,170 @@
   >
     <div
       style="
-        max-width: 30rem;
+        max-width: 25rem;
         width: 100%;
         height: 100%;
         background-color: white;
         padding: 2rem;
-        padding-top: 10rem;
+        padding-top: 5rem;
         border-radius: 0.5rem;
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
       "
     >
-      <form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <input type="submit" value="Signup" />
-</form>
+      <p style="font-size: 35px; font-weight: 600">Todo Manager</p>
+      <p style="margin-top: 4rem; font-size: 20px; font-weight: 300">Signup</p>
+
+      {{ form.non_field_errors }}
+
+      <form style="margin-top: 2rem" method="post">
+        {% csrf_token %}
+
+        <div style="display: flex; flex-direction: column; gap: 0.3rem">
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              width: 100%;
+              justify-content: space-between;
+              align-items: end;
+            "
+          >
+            <label
+              for="{{ form.username.id_for_label }}"
+              style="font-weight: 300; font-size: 1rem"
+              >Username</label
+            >
+            <span style="font-weight: 200; font-size: 0.7rem; color: red">
+              {{ form.username.errors }}</span
+            >
+          </div>
+          <input
+            name="username"
+            type="text"
+            style="
+              background-color: #f1f5f9;
+              padding: 0.5rem;
+              border: 0;
+              border-radius: 0.375rem;
+            "
+          />
+          <span style="font-weight: 200; font-size: 0.7rem">
+            {{ form.username.help_text }}</span
+          >
+        </div>
+
+        <div
+          style="
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              width: 100%;
+              justify-content: space-between;
+              align-items: end;
+            "
+          >
+            <label
+              for="{{ form.password1.id_for_label }}"
+              style="font-weight: 300; font-size: 1rem"
+              >Password</label
+            >
+            <span style="font-weight: 200; font-size: 0.7rem; color: red">
+              {{ form.password1.errors }}</span
+            >
+          </div>
+
+          <input
+            name="password1"
+            type="password"
+            style="
+              background-color: #f1f5f9;
+              padding: 0.5rem;
+              border: 0;
+              border-radius: 0.375rem;
+            "
+          />
+          <span style="font-weight: 200; font-size: 0.7rem">
+            {{ form.password1.help_text }}</span
+          >
+        </div>
+
+        <div
+          style="
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              width: 100%;
+              justify-content: space-between;
+              align-items: end;
+            "
+          >
+            <label
+              for="{{ form.password2.id_for_label }}"
+              style="font-weight: 300; font-size: 1rem"
+              >Confirm Password</label
+            >
+            <span style="font-weight: 200; font-size: 0.7rem; color: red">
+              {{ form.password2.errors }}</span
+            >
+          </div>
+
+          <input
+            name="password2"
+            type="password"
+            style="
+              background-color: #f1f5f9;
+              padding: 0.5rem;
+              border: 0;
+              border-radius: 0.375rem;
+            "
+          />
+          <span style="font-weight: 200; font-size: 0.7rem">
+            {{ form.password2.help_text }}</span
+          >
+        </div>
+
+        <input
+          type="submit"
+          value="Sign Up"
+          style="
+            margin-top: 2rem;
+            background-color: #ef4444;
+            width: 100%;
+            border-radius: 0.375rem;
+            color: white;
+            border: 0;
+            padding: 0.6rem;
+            cursor: pointer;
+          "
+        />
+      </form>
+      <span
+        style="
+          margin-top: -5px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          font-size: 0.8rem;
+          font-weight: 300;
+          gap: 4px;
+        "
+      >
+        Already have an account? <a href="/login">Login</a>
+      </span>
+    </div>
   </body>
 </html>

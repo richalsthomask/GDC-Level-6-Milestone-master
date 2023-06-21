@@ -16,13 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
 from tasks.views import (
     delete_task,
-    report_view,
     redirect_to_login,
+    report_view,
     GenericTaskVew,
     GenericTaskCreateView,
     GenericTaskUpdateView,
@@ -49,4 +47,4 @@ urlpatterns = [
     path("task/<pk>", GenericTaskDetailView.as_view()),
     path("completed_tasks/", GenericCompletedTasksView.as_view()),
     path("all_tasks/", report_view),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
